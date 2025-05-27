@@ -1,0 +1,796 @@
+import numpy as np
+import pandas as pd
+import openpyxl as pyl
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statistics
+import unicodedata
+from tabulate import tabulate
+from matplotlib import style
+rupee_symbol = unicodedata.lookup("INDIAN RUPEE SIGN")
+
+
+print('\t\t\t\t\t\t\t\t BANK OF YUVARAAJ')
+
+
+df=pd.read_excel('PROJECTS/banking_dataset_CUSTOMER DETAILS.xlsx')
+df1=pd.read_csv('PROJECTS/banking_data_Bank Details new.csv')
+df2 = pd.read_excel('PROJECTS/Balance_Sheet_Bank_of_Yuvaraaj.xlsx')
+
+data = ['Branch','Account Type','Transaction Type', 'Account Balance','Currency']
+
+
+#----------------------------------------Customer Details-----------------------------
+
+while True:
+     print('*'*50)
+     print('Choose Your Choice\n 1) Customer Details \n 2) Business Details\n 3) Balance Sheet Details\n')
+     print('*'*50)
+     TWO_CHOICE = input('Type Your Option\n').upper()
+     
+     if TWO_CHOICE == 'CUSTOMER DETAILS':
+          for i, j in enumerate(data, start=1):
+               print(i, j)
+          
+          Choice_1 = int(input('Press Any One Number From 1 To 5\n'))
+          if Choice_1 == 1:
+               print('*'*130)
+               print("\t\t\tList of Customer's City From Bank Of Yuvaraaj\n")
+               print('*'*130)
+               
+               list_city = df['Branch'].unique()
+               dr = list_city
+               for count, city in enumerate(list_city, start=1):
+                    print(count, city)
+
+
+               print('*'*130)
+               print('Which Branch of City Do You Want?')
+               print('*'*130)
+               
+               one_country = input('Choose Your Country\n')
+               
+               Branch = df[df["Branch"] == one_country]
+               print(Branch )
+
+               
+               colours = ['#000' if city == one_country else 'yellow' for city in list_city]
+               plt.figure(figsize=(12, 6))
+               #plt.bar(list_city, height=10000,color=colours, lw = 2, width=0.5,edgecolor='green')
+               sns.countplot(x=df['Branch'], palette=colours, edgecolor='green')
+               plt.title("Showing Branch As Per Input", fontsize=14)
+               plt.xlabel('Branches', fontsize=10)
+               plt.ylabel('Total Count', fontsize=10)
+               #plt.grid(axis='y', linestyle='--', alpha=0.5)
+               plt.tight_layout()
+               plt.show()
+
+               
+               cu_info = input('Do You Want to Know More Info--> Yes / No\n').upper()
+               if cu_info == 'YES':
+                    print('Count Of All The Countries')
+                    cus_info = df["Branch"].value_counts()
+                    print('*'*80)
+                    print(cus_info)
+                    print('*'*80)
+                    sns.countplot(df['Branch'],color='Blue')
+                    plt.title('COUNTING THE BRANCHES')
+                    plt.xlabel('Count')
+                    plt.ylabel('Branch Name')
+                    plt.xticks(rotation=40)
+                    plt.tight_layout()
+                    plt.show()
+
+
+               elif cu_info == 'NO':
+                    print('Thanks For Checking')
+                    break
+
+               else:
+                    print('Start The programme From The Beginning')
+                    break
+
+               print('Do You Want To Continue?')
+               or_ = input('YES/NO\n').upper()
+               if or_ != 'YES':  
+                    print('Thank You')
+                    break
+          
+               elif or_ == 'YES':
+                    print('Sure')
+          
+               else:
+                    print('Start The Programme From The Beginning')
+                    break
+
+               
+
+     #---------------------------------Account Type-----------------------------------------------
+
+          if Choice_1 == 2:
+                         print('*'*130)
+                         print('\t\t\tList Of Account Types From Customers')
+                         print('*'*130)
+                         account=df['Account Type'].unique()
+                         for acc,acc1 in enumerate(account,start=1):
+                              print(acc,acc1)
+                         print('*'*130)
+                         print('\t\t\tWhich Type of Account Do You Want')
+                         print('*'*130)
+                         acc_type = input('Choose Your Account\n')
+                         acc_1 = df[df['Account Type']== acc_type]
+                         print(acc_1)
+                         
+                         cu_info1 = input('Do You Want to Know More Info--> Yes / No\n').upper()
+                         if cu_info1 == 'YES':
+                              val=df['Account Type'].value_counts()
+                              print('*'*130)
+                              print(val)
+                              print('\n\n')
+                              print('Mode for Account Type')
+                              mod_acc=statistics.mode(df['Account Type'])
+                              print(mod_acc)
+                              print('*'*130)
+                              val_df = val.reset_index()
+                              val_df.columns = ['Account Type', 'Value Counts']
+                              plt.figure(figsize=(12, 6))
+                              plt.plot(val_df['Account Type'], val_df['Value Counts'], marker='o', linestyle='-',color="#FF0000")
+                              plt.title('Account Type Based On Value_Counts')
+                              plt.xlabel('Account Type')
+                              plt.ylabel('Value Counts')
+                              plt.xticks(rotation=45) 
+                              plt.show()
+                         elif cu_info1 == 'NO':
+                              print('Thanks For Visiting')
+                              break
+                         else:
+                              print('Start The Programme From The Beginning')
+                              break
+                         
+
+     #----------------------------------------Transaction Type---------------------------------------------------
+
+     #------------Debit----------
+          if Choice_1 == 3:
+               print('\t\t\tList of Account Transaction & Balances')
+               trans = df[df.columns[4:7]]  
+               trans1 = df[df.columns[1]]
+               trans2 = pd.concat([trans1, trans], axis=1)  
+               print('*'*80)
+               print(trans2)
+               print('*'*80)
+               print('Checking The Count Of Debit Or Credit Transaction\n')
+               debit_credit = input("Debit or Credit\n").upper()
+               if debit_credit == 'DEBIT':
+                    print('Debit Transaction Details Of Customers')
+                    deb = df[df['Transaction Type'] == 'Debit'].value_counts()
+                    print('*'*130)
+                    print(deb)
+                    print('*'*130)
+                    print('If You Want To Know About More Info About Debit Transaction Press Yes\n')
+                    deb1 = input('Yes or No\n').upper()
+                    if deb1 == 'YES':
+                         deb2 = df['Transaction Type'].count()
+                         debit_df = df[df['Transaction Type'] == 'Debit']
+                         most_frequent_customer = debit_df['Customer Name'].mode()[0]
+                         print('*'*80) 
+                         print(f'Totally there are {deb2} Debit Transaction')
+                         print('\n')
+                         print(f'Most frequent customer with Debit transactions: {most_frequent_customer}')
+                         print('\n')
+                         print('*'*80)
+                         ax = plt.axes(projection='3d')
+                         ax.bar(df['Branch'].unique(), df[df['Transaction Type'] == 'Debit']['Branch'].value_counts(), color='red',edgecolor = 'green', width=0.1,lw = 3)
+                         plt.title('Debit Transactions Per Branch', fontsize=14)
+                         plt.xlabel('Branch', fontsize=12)
+                         plt.ylabel('Number of Debit Transactions', fontsize=12)
+                         plt.xticks(rotation=45)  
+                         plt.show()
+                    elif deb1 == 'NO':
+                         print('Thanks For Checking')
+                         break
+                    else:
+                         print('Start The Programme From The Beginning')
+                         break
+                         
+
+          #----------Credit---------------
+
+               if debit_credit == 'CREDIT':
+                    print('Credit Transaction Details Of Customers')
+                    cre = df[df['Transaction Type'] == 'Credit'].value_counts()
+                    print('*'*80)
+                    print(cre)
+                    print('*'*80)
+                    print('If You Want To Know About More Info About Credit Transaction Press Yes\n')
+                    cre1 = input('Yes or No\n').upper()
+                    if cre1 == 'YES':
+                         cre2 = df['Transaction Type'].count()
+                         credit_df = df[df['Transaction Type'] == 'Credit']
+                         most_frequent_customer_cre = credit_df['Customer Name'].mode()[0] 
+                         print('*'*80)
+                         print(f'Totally there are {cre2} Credit Transaction')
+                         print('\n')
+                         print(f'Most frequent customer with Credit transactions: {most_frequent_customer_cre}')
+                         print('\n')
+                         print('*'*80)
+                         ax = plt.axes(projection='3d')
+                         credit_counts = df[df['Transaction Type'] == 'Credit']['Branch'].value_counts()
+                         credit_df = credit_counts.reset_index()
+                         credit_df.columns = ['Branch', 'Credit Transactions']
+                         ax.bar(credit_df['Branch'], credit_df['Credit Transactions'], color='green', edgecolor='violet', width=0.5)
+                         plt.title('Credit Transactions Per Branch', fontsize=14)
+                         plt.xlabel('Branch', fontsize=12)
+                         plt.ylabel('Number of Credit Transactions', fontsize=12)
+                         plt.xticks(rotation=45)
+                         plt.show()
+                    elif cre1 == 'NO':
+                         print('Thanks For Checking')
+                         break
+                    else:
+                         print('Start The Programme From The Beginning')
+                         break
+
+          #----------------------------------Account Balance-------------------------------
+          if Choice_1 == 4:
+               print('*'*130)
+               print("\t\t\tChecking The Customer's Account Balance")
+               print('*'*130)
+               acc_ba= df[df.columns[0:2]]
+               acc_ba1=df[df.columns[6]]
+               acc_concat=pd.concat([acc_ba,acc_ba1],axis=1)
+               print(acc_concat)
+               ac = input('Do You Want To Know More Info About Account Balance (Yes)\n').upper()
+               if ac == 'YES':
+                    print('*'*130)
+                    print('\t\t\tHere Is The Customer Details With Their Transaction Amount')
+                    print('*'*130)
+                    #tot = df['Transaction Amount'].sum()
+                    df['Transaction Amount'] = df['Transaction Amount'].apply(lambda x: round(x, 0))
+                    ac1 = df[df.columns[1]]
+                    df_ac = pd.concat([ac1,df['Transaction Amount']],axis=1)
+                    print(df_ac)
+                    ac_ad = input('Do You Want To Know More Info About Transaction Amount & Account Balance (Yes)\n').upper()
+                    if ac_ad == 'YES':
+                         ac_in = input('Which One Do You Want To Check Either Transaction Amount Or Account Balance\n')
+                         ac_mean = df[ac_in].mean()
+                         ac_min = df[ac_in].min()
+                         ac_max = df[ac_in].max()
+                         ac_sum = df[ac_in].sum()
+                         ac_std_dev = df[ac_in].std()
+                         ac_nor_dis = statistics.NormalDist(ac_mean, ac_std_dev)
+                         x_values = np.linspace(ac_min, ac_max, 100)
+                         y_values = [ac_nor_dis.pdf(x) for x in x_values]
+                         plt.figure(figsize=(10, 6))
+                         sns.histplot(df[ac_in], bins=30, kde=True, color='blue', stat="density", label="Histogram")
+                         plt.plot(x_values, y_values, color='red', label="Normal Distribution Curve")
+                         plt.grid(True)
+                         plt.legend()
+                         plt.title("Histogram & Normal Distribution Curve")
+                         plt.xlabel("Values")
+                         plt.ylabel("Density")
+                         plt.show()
+
+                         print('*'*100)
+                         print(f'Average Of Customer Bank {ac_in} is {rupee_symbol} {ac_mean:.0f}') 
+                         print(f"Minimum Balance Of YUVARAAJ BANK'S Customer {ac_in}  is {rupee_symbol} {ac_min:.0f}")
+                         print(f"Maximum Balance Of YUVARAAJ BANK'S Customer {ac_in} is {rupee_symbol} {ac_max:.0f} ")
+                         print(f'Sum of {ac_in} Of Customer From BANK OF YUVARAAJ is {ac_sum:.0f}')
+                         print('*'*100)
+
+                         ac_manual = input('Do You Want To Check Manually with Your Input (Yes)\n').upper()
+
+                         if ac_manual == 'YES':
+                              print('Enter Your Amount Do You Want To Check')
+                              acc_manual = int(input())
+                              acc_manu_output = df[df['Account Balance'] >= acc_manual][['Customer Name', 'Account Balance', 'Transaction Type', 'Transaction Amount']]
+                              print('*'*80)
+                              print(acc_manu_output)
+                              print('*'*80) 
+                         elif ac_manual == 'NO':
+                              print('Thanks For Checking')
+                              break
+
+                         else:
+                              print('Start The Programme From The Beginning')
+                              break
+
+                    elif ac_ad == 'NO':
+                         print('Thanks For Checking')
+                         break
+
+                    else:
+                         print('Start The Programme From The Beginning')
+                         break
+
+               elif ac == 'NO':
+                    print('Thanks For Checking')
+                    break
+
+               else:
+                    print('Start The Programme From The Beginning')
+                    break
+
+                         
+          #-------------------------------------Currency----------------------------------------------------------------------------
+
+          if Choice_1 == 5:
+                    print('*'*130)
+                    print('\t\t\tSegregating The Currency Based On Country')
+                    print('*'*130)
+                    cur = df['Currency'].unique()
+                    for cur_name, cur_name1 in enumerate(cur, start=1):
+                         print(cur_name, cur_name1)
+
+                    
+                    def Currency_Name(Currency):
+                         if Currency == 'GBP':
+                              return 'British Pound Sterling'
+                         elif Currency == 'USD':
+                              return 'United States Dollar'
+                         elif Currency == 'INR':
+                              return 'Indian Rupee'
+                         elif Currency == 'EUR':
+                              return 'Euro'
+                         elif Currency == 'JPY':
+                              return 'Japanese Yen'
+                         else:
+                              return 'Unknown Currency'  
+
+                    
+                    df['Currency_Name'] = df['Currency'].apply(Currency_Name)
+                    print('*'*130)
+                    print(f'\t\t\tAdding Column Name: Currency Name Is Added Along With My Dataset\n{df}')
+                    print('*'*130)
+                    print('\n\n')
+                    
+                    cur_again = input('Do You Want To Count The Currency Name Based On Contry\n ==>  ').upper()
+                    
+                    if cur_again == 'YES':
+                         count_cur = df['Currency_Name'].value_counts()
+                         print('*'*130)
+                         print(f'\t\t\tCounting Customers Based On Currencies\n{count_cur}')
+                         print('*'*130)
+                         cur_ = df['Currency_Name'].unique()
+                         currency_counts = df['Currency_Name'].value_counts()
+                         plt.figure(figsize=(8, 8))
+                         plt.pie(currency_counts, labels=cur_, autopct='%1.1f%%', colors=['red', 'blue', 'green', 'yellow', 'purple'])
+                         plt.title('Currency Distribution')
+                         plt.show()
+
+                         
+                         mat_col1 = input('Do You Want To See The Graph For All Columns Data (YES)\n ===:>  ').upper()
+
+                         if mat_col1 == 'YES':
+                              cd_col = df.columns
+                              plt.figure(figsize=(16,12))
+                              for mat_cc,mat_cc1 in enumerate(df.columns):
+                                   plt.subplot(3,3,mat_cc +1)
+                                   sns.histplot(df[mat_cc1],bins=30)
+                                   plt.xticks(rotation = 40)
+                                   plt.title(f'Distribution of {mat_cc1}') 
+                              plt.tight_layout()
+                              plt.show()
+                         print('Do You Want To Continue This Statement (Yes/No)\n')
+                         mat_fin = input().upper()
+                         if mat_fin == 'YES':
+                              print("Let's Start")
+                              
+                         elif mat_fin == 'NO':
+                              print('Thanks For Checking')
+                              break
+
+                         elif mat_col1 == 'NO':
+                              print('Thanks For Checking')
+                              break
+
+                         else:
+                              print('Start The Programme From The Beginning')
+                              break
+                    elif cur_again == 'NO':
+                         print('Thanks For Checking')
+                         break
+                    else:
+                         print('Start The Programme From The Beginning')
+                         break
+
+                    
+
+
+
+#--------------------------------------Business Details----------------------------------------------------------------------
+
+     if TWO_CHOICE == 'BUSINESS DETAILS':
+          bd_col = ['Shareholders', 'Investors','Borrowings From RBI','Borrowings From Other Banks','Bills Receivable (BR)']
+          for bd1,bd2 in enumerate(bd_col,start=1):
+               print(bd1,bd2)
+          Choice_2 = int(input('Press Any One Number From 1 To 5\n'))
+
+          #--------------------------Shareholders-------------------------
+          if Choice_2 == 1:
+               print('*'*130)
+               print('\t\t\tList Of Shareholders Name From Bank Of YUVARAAJ')
+               print('*'*130)
+               sh_name = df1['Shareholder_Name']
+               print(sh_name)
+               sh_p= input("Do You Want to Know About Shareholder's Percentage (Yes)\n==>").upper()
+
+               if sh_p == 'YES':
+                    print('*'*130)
+                    print('\t\t\tThis Is Our Shareholder Names Along With Their Shares Percentage\n')
+                    print('*'*130)
+                    sh_pp = df1[df1.columns[0]]
+                    sh_pp1 = df1[df1.columns[2]]
+                    con_sh = pd.concat([sh_pp,sh_pp1],axis=1)
+                    print(con_sh)
+                    
+                    sh_com_in = input('Do You Want Top 5 Shareholers Based On Percentage (Yes)\n ===> ').upper()
+               
+                    if sh_com_in == 'YES':
+                         print('*'*130)
+                         print('This Is Our Top 5 Shareholders Percentage\n')
+                         print('*'*130)
+                         sh_p_top = df1.nlargest(5,'Percentage_of_Shareholders')[['Shareholder_Name','Percentage_of_Shareholders']]
+                         sh_p_top1 = df1.nlargest(5,'Percentage_of_Shareholders')['Percentage_of_Shareholders']
+                         sh_top_name = df1.nlargest(5,'Percentage_of_Shareholders')['Shareholder_Name']
+                         print(sh_p_top)
+                         plt.figure(figsize=(10, 6))  
+                         plt.plot(range(len(sh_top_name)), sh_p_top1, color='#00f', marker='*', linestyle='-', linewidth=2)  
+                         plt.xticks(range(len(sh_top_name)), sh_top_name, rotation=45, ha='right')  
+                         plt.title('Top 5 Shareholders Based On Their Percentage', fontsize=14)
+                         plt.ylabel('Percentage Of Shareholder', fontsize=12)
+                         plt.xlabel('Shareholders Name', fontsize=12)
+                         plt.show()
+                         #sh_com_low = input('Do You Want Least 5 Shareholders Based On Percentage (Yes)\n ===>').lower()
+
+                         #if sh_com_low == 'yes':
+                              #print("This Is Our Least 5 Shareholder's Percentage\n")
+                              #sh_low = df1.sort_values('Percentage_of_Shareholders',ascending=False).tail(5)[['Shareholder_Name','Percentage_of_Shareholders']]
+                              #print(sh_com_low)
+                    elif sh_com_in == 'NO':
+                         print('Thanks For Checking')
+                         break
+                    else:
+                         print('Start The Programme From The Beginning')
+                         break
+               elif sh_p == 'NO':
+                    print('Thanks For Checking')
+                    break
+               else:
+                    print('Start The Programme From The Beginning')
+                    break
+
+               #--------------------------------Investors--------------------------------
+
+          if Choice_2 == 2:
+               print('*'*130)
+               print('\t\t\tThese Are All Investors Name Of Bank Of YUVARAAJ\n')
+               print('*'*130)
+               inv_name = df1['Investor_Name']
+               print(inv_name)
+               inv_per = input('Do You Want To Know How Much Percentage, Investor Invested In Debentures (Yes)\n ===>  ').upper()
+               
+               if inv_per == 'YES':
+                    print('*'*130)
+                    print('\t\t\tHere Is The Percentage Of Debentures Invested')
+                    print('*'*130)
+                    inv_percent = df1[['Investor_Name', 'Percentage_of_Debentures_Invested']]
+                    print(inv_percent)
+                    inv_per_amount = input('Do You Want To Know How Much Amount Investor Invested For Debentures\n ===>  ').upper()
+
+                    if inv_per_amount == 'YES':
+                         INV_PER_AMOUNT = df1[['Investor_Name','Percentage_of_Debentures_Invested','Debentures_Invested_Amount']]
+                         print('*'*100)
+                         print("\t\t\tHere Is The Investor Amount Along With Investor's Name & Percentage")
+                         print('*'*100)
+                         print(f'\n{INV_PER_AMOUNT}')
+                         inv_more = input('Do You Want To Know More Info About This --> (Yes)\n ===>  ').upper()
+
+                         if inv_more == 'YES':
+                              print('\t\t\tHere Is Your More Info About Investors\n')
+                              inv_min_per = df1.nsmallest(1,'Percentage_of_Debentures_Invested')[['Investor_Name','Percentage_of_Debentures_Invested']]
+                              inv_max_per = df1.nlargest(1,'Percentage_of_Debentures_Invested')[['Investor_Name','Percentage_of_Debentures_Invested']]
+                              inv_min_amt = df1.nsmallest(1,'Debentures_Invested_Amount')[['Investor_Name','Debentures_Invested_Amount']]
+                              inv_max_amt = df1.nlargest(1,'Debentures_Invested_Amount')[['Investor_Name','Debentures_Invested_Amount']]
+                              print('*'*100)
+                              print(f'Minimum Percentage Invested In Debentures By Investor Is\n {inv_min_per}%\n')
+                              print(f'Maximum Percentage Invested In Debentures By Investor Is\n {inv_max_per}%\n')
+                              print(f'Minimum Amount Invested In Debentures By Investor Is\n {inv_min_amt}\n')
+                              print(f'Maxinum Amount Invested In Debentures By Investor Is\n {inv_max_amt}\n')
+                              print('*'*100)
+                              print('\n\n')
+                              categories1 = ['Min Amount Invested', 'Max Amount Invested']
+                              categories2 = ['Min % Invested', 'Max % Invested']
+                              values1 = [inv_min_amt['Debentures_Invested_Amount'].values[0], inv_max_amt['Debentures_Invested_Amount'].values[0]]
+                              values2 = [inv_min_per['Percentage_of_Debentures_Invested'].values[0], inv_max_per['Percentage_of_Debentures_Invested'].values[0]]
+                              #Chart 1
+                              plt.bar(categories1, values1, color=['red', 'green'])
+                              plt.title('Min Max Amount Of Debentures Invested', fontsize=14)
+                              plt.xlabel('Level Of Investment', fontsize=12)
+                              plt.ylabel('Value', fontsize=12)
+                              plt.xticks(rotation=10)
+                              plt.show()
+                              # Chart 2
+                              plt.bar(categories2, values2, color = ['blue','#0f0']) 
+                              plt.title('Min Max Percentage Of Debentures invested')
+                              plt.xlabel('Level Of Investment')
+                              plt.ylabel('Values')
+                              plt.xticks(rotation=10)
+                              plt.show()
+
+                         elif inv_more == 'NO':
+                              print('Thanks For Checking')
+                              break
+
+                         else:
+                              print('Start The Programme From The Beginning')
+                              break
+
+                    elif inv_per_amount == 'NO':
+                         print('Thanks For Checking')
+                         break
+
+                    else:
+                         print('Start The Programme From The Beginning')
+                         break
+
+               elif inv_per == 'NO':
+                    print('Thanks For Checking')
+                    break
+
+               else:
+                    print('Start The Programme From The Beginning')
+                    break
+
+          #-----------------------Borrowings From RBI--------------------------------------------
+
+          if Choice_2 == 3:
+               print('*'*130)
+               print('\t\t\tHow Much Amount Bank Of YUVARAAJ Borrowed Money From Reserve Bank Of India (RBI)\n')
+               print('*'*130)
+               bor = df['Branch']
+               bor1 = df1['Borrowed_from_RBI_Rs']
+               bor2 = pd.concat([bor,bor1],axis=1)
+               dff = bor2.dropna()
+               print(dff)
+               bo = input('Do You Want To Know More Info About Borrowings From RBI\n ===>').upper()
+               if bo == 'YES':
+                    print('*'*130)
+                    print('\t\t\tThese Branches Borrowed More Money From RBI Among Other Branch Of Bank Of YUVARAAJ\n')
+                    print('*'*130)
+                    branch_more = dff.nlargest(5,'Borrowed_from_RBI_Rs').reset_index()[['Branch','Borrowed_from_RBI_Rs']]
+                    print(branch_more)
+                    print('\n\n')
+                    print('These Branches Borrowed Less Money From RBI Among Other Branch Of Bank Of YUVARAAJ\n')
+                    branch_low = dff.nsmallest(5,'Borrowed_from_RBI_Rs').reset_index()[['Branch','Borrowed_from_RBI_Rs']]
+                    print(branch_low)
+                    plt.figure(figsize=(8,6))
+                    plt.scatter(branch_more['Branch'], branch_more['Borrowed_from_RBI_Rs'], color='red', label='Top Borrowers')
+                    plt.scatter(branch_low['Branch'], branch_low['Borrowed_from_RBI_Rs'], color='blue', label='Low Borrowers')
+                    income_ticks= list(range(10000000,110000000,10000000))
+                    plt.xlabel("Bank Branch")
+                    plt.ylabel("Borrowed from RBI (Rs)")
+                    plt.title("Bank Of Yuvaraaj Borrowed Money from RBI")
+                    plt.xticks(rotation=45)
+                    plt.yticks(income_ticks,[f'{rupee_symbol}{x}Cr' for x in income_ticks])
+                    plt.legend()
+                    plt.show()
+                    bo_re = input('Do You Want To Know Which Branch Of Bank Of YUVARAAJ Borrowed Money From RBI For Many Times\n ===>').upper()
+
+                    if bo_re == 'YES':
+                         bor_rbi_mode = dff['Branch'].mode(1)
+                         print(bor_rbi_mode)
+
+                    elif bo_re == 'NO':
+                         print('Thanks For Checking')
+                         break
+
+                    else:
+                         print('Start The Programme From The Beginning')
+               
+               elif bo == 'NO':
+                    print('Thanks For Checking')
+                    break
+
+               else:
+                    print('Start The Programme From The Beginning')
+                    break
+
+          #--------------------------------Borrowings From Other Banks-------------------------------------------------------
+
+          if Choice_2 == 4:
+               print('*'*130)
+               print('\t\t\tHow Much Amount Branches Of Bank Of YUVARAAJ Borrowed Money From Other Banks\n')
+               print('*'*130)
+               bor_bran = df['Branch']
+               bor3 = df1['Borrowed_from Other_Bank_Rs']
+               bor4 = pd.concat([bor_bran,bor3],axis=1)
+               is_null = bor4.dropna()
+               print(is_null)
+               bor_other = input('Do You Want To Know About Which Borrowed Money From Which Bank\n===>  ').upper()
+
+               if bor_other == 'YES':
+                    print('*'*130)
+                    print('\t\t\tThese Branches Borrowed Money From These Banks')
+                    print('*'*130)
+                    df1['Loan From Banks'] = df1['Bills Receivable From Banks'].copy()
+                    bor_other1 = pd.concat([is_null,df1['Loan From Banks'] ],axis=1)
+                    print(bor_other1)
+                    bor_other2 = input('Top 5 Borrowed More And Less Amount From Other Banks\n ===>  ').upper()
+
+                    if bor_other2 =='YES':
+                         print('*'*130)
+                         print('\t\t\tHere Is Your Report For Top 5 Borrowers From Other Banks')
+                         print('*'*130)
+                         bor_other3 = bor_other1.nlargest(5,'Borrowed_from Other_Bank_Rs').reset_index()
+                         print(bor_other3)
+                         print('\n\n')
+                         print('*'*130)
+                         print('\t\t\tHere Is Your Report For Least 5 Borrowers From Other Banks')
+                         print('*'*130)
+                         bor_other4 = bor_other1.sort_values('Borrowed_from Other_Bank_Rs',ascending=True).head(5).reset_index()
+                         print(f'{bor_other4}\n\n')
+                         bor_fre_ob = input('Do You Want To Know About Which Bank Had Frequently Borrowed Money From Various Bank (YES)\n ===>  ').upper()
+
+                         if bor_fre_ob =='YES':
+                              print('*'*130)
+                              print('\t\t\tHere Is Your Report Of Most Frequent Borrower\n')
+                              print('*'*130)
+                              bor_other5 = bor_other1['Branch'].mode()[0]
+                              print(f'{bor_other5} Branch Of Bank Had Frequently Borrowed Money From Other Banks')
+                         
+                         elif bor_fre_ob == 'NO':
+                              print('Thanks For Checking')
+                              break
+
+                         else:
+                              print('Start The Programme From The Beginning')
+
+                    elif bor_other2 == 'NO':
+                         print('Thanks For Checking')
+                         break
+
+                    else:
+                         print('Start The Programme From The Beginning')
+                         break
+               
+               elif bor_other == 'NO':
+                    print('Thanks For Checking')
+
+               else:
+                    print('Start The Programme From The Beginning')
+
+          #------------------------------Bills Receivable (BR)-----------------------------
+
+          if Choice_2 == 5:
+               print('*'*130)
+               print('\t\t\tHere Is The Bills Receivable Along With Bills Receivable From Banks')
+               print('*'*130)
+               br_cont1_amt_bank = df['Branch']
+               br_cont2_amt_bank = df1[['Bills_Receivable_Amount','Bills Receivable From Banks']]
+               br_cont_amt_bank = pd.concat([br_cont1_amt_bank,br_cont2_amt_bank],axis=1)
+               is_null_br = br_cont_amt_bank.dropna()
+               print(is_null_br)
+               br_re = input('Do You Want To Know Which Branch Received More BR From Other Banks\n ===>   ').upper()
+               
+               if br_re == 'YES':
+                    print('-'*130)
+                    print('\t\t\tTop 3 Branches Received More BR From Other Banks')
+                    print('-'*130)
+                    br_branch_max = br_cont_amt_bank['Branch'].value_counts().head(3)
+                    print(f'\n{br_branch_max}\n')
+
+                    print('-'*130)
+                    print('\t\t\tLeast 3 Branches Received More BR From Other Banks')
+                    print('-'*130)
+                    br_branch_min = br_cont_amt_bank['Branch'].value_counts().tail(3)
+                    print(f'\n{br_branch_min}\n')
+                    br_branch_amt = input('Do You Want To Know Which Branch Borrowed More And Less Money From Other Banks\n===>  ').upper()
+
+                    if br_branch_amt == 'YES':
+                         print('*'*130)
+                         print('\t\t\tThis Report Is Based On Branch Name And Bills Receivable Amount As Per Groupby The Branch Name')
+                         print('*'*130)
+                         br_branch_max1 = br_cont_amt_bank.groupby('Branch')['Bills_Receivable_Amount'].sum().reset_index()
+                         print(br_branch_max1)
+                         br_branch_max2 = br_branch_max1.sort_values('Bills_Receivable_Amount', ascending=False)
+                         plt.figure(figsize=(12, 6))
+                         sns.barplot(data=br_branch_max2, x='Branch', y='Bills_Receivable_Amount', palette='coolwarm')
+                         plt.xlabel("Bank Branch")
+                         plt.ylabel(f"Bills Receivable ({rupee_symbol}Cr in Rs)")
+                         plt.title("Bills Receivable Distribution Across Bank Branches")
+                         plt.xticks(rotation=45)
+                         plt.show()
+                         
+                         br_re_bank = input('Do You Want To Know Which Bank Gave A BR To Branches Of The Bank Of YUVARAAJ (YES/NO)\n===:>  ').upper()
+                         
+                         if br_re_bank == 'YES':
+                              brb = df1['Bills Receivable From Banks']
+                              for br, br1 in enumerate(brb,start=1):
+                                   print(br,br1)
+
+                              ch_1 = input('Enter The Bank Name Above The Output\n===:>  ')
+                              print('*'*130)
+                              print('Here Is Your Report As Per Input\n')
+                              print('*'*130)
+                              conc1 = df['Branch']
+                              conc2 = df1[['Bills Receivable From Banks','Bills_Receivable_Amount']]
+                              conc = pd.concat([conc2,conc1],axis=1)
+                              ch_2 = conc[conc['Bills Receivable From Banks']==ch_1][['Bills Receivable From Banks','Bills_Receivable_Amount','Branch']]
+                              print(tabulate(ch_2))
+
+                         elif br_re_bank == 'NO':
+                              print('Thanks For Checking')
+                              break
+
+                         else:
+                              print('Start The Programme From The Beginning')
+                              break
+
+                    elif br_branch_amt == 'NO':
+                         print('Thanks For Checking')
+                         break
+
+                    else:
+                         print('Start The Programme From The Beginning')
+
+               elif br_re == 'NO':
+                    print('Thanks For Checking')
+                    break
+
+               else:
+                    print('Start The Programme From The Beginning')
+                    break
+
+          mat_col2 = input('Do You Want To See The Graph For All Columns Data (YES)\n ===:>  ').upper()
+
+          if mat_col2 == 'YES':
+               cd_col2 = df1.columns
+               plt.figure(figsize=(16,12))
+               for mat_cc0,mat_cc2 in enumerate(df1.columns):
+                    plt.subplot(3,3,mat_cc0 +1)
+                    sns.histplot(df1[mat_cc2],bins=30)
+                    plt.xticks(rotation = 40)
+                    plt.title(f'Distribution of {mat_cc2}') 
+               plt.tight_layout()
+               plt.show()
+
+          elif mat_col1 == 'NO':
+               print('Thanks For Checking')
+               break
+
+          else:
+               print('Start The Programme From The Beginning')
+               break
+
+#----------------------------Balance Sheet Details---------------------------------------
+
+     if TWO_CHOICE == 'BALANCE SHEET DETAILS':
+          print('*'*130)
+          print('\t\t\tHere Is The Balance Sheet Of Bank Of YUVARAAJ')
+          print('*'*130)
+          print('\n')
+          print(tabulate(df2))
+          
+
+          mat_col3 = input('Do You Want To See The Graph For All Columns Data (YES)\n ===:>  ').upper()
+
+          if mat_col3 == 'YES':
+               categories = ["Current Assets", "Fixed Assets", "Other Assets", "Liabilities", "Equity"]
+               amounts = [62500, 3200, 2800, 61500, 7000]  
+               plt.figure(figsize=(10, 6))
+               plt.bar(categories, amounts, color=['blue', 'green', 'purple', 'red', 'orange'])
+               plt.xlabel("Financial Categories")
+               plt.ylabel("Amount (₹ Crore)")
+               plt.title("Bank of YUVARAAJ - Financial Statemet Chart")
+               plt.xticks(rotation=10)
+               plt.grid(axis='y', linestyle='--', alpha=0.6)
+               plt.show()
+
+          elif mat_col1 == 'NO':
+               print('Thanks For Checking')
+               break
+
+          else:
+               print('Start The Programme From The Beginning')
+               break
