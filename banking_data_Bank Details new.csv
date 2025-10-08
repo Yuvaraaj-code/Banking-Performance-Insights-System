@@ -1,0 +1,101 @@
+Shareholder_Name,Investor_Name,Percentage_of_Shareholders,Debentures_Invested_Amount,Percentage_of_Debentures_Invested,Borrowed_from_RBI_Rs,Borrowed_from Other_Bank_Rs,Bills_Receivable_Amount,Bills Receivable From Banks
+Gregory Fischer,Julie Hunt,6.57,1770478,5.07,97775215,73371272,11865397,Bank of Baroda
+Derek Davidson,Darlene Clayton,0.74,46653046,3.51,80993218,58643924,4364454,Bank of India
+Cynthia Carter,Rachel Bowman,3.11,49366822,18.77,11049999,76969657,16214593,Bank of Maharashtra
+Joshua Patrick,Amanda Williams,2.62,8687437,11.85,99639081,49446182,3026627,Canara Bank
+Karen Roberts,Scott Chandler,7.5,46748808,9.98,84437458,8704481,5223021,Central Bank of India
+Jason Cochran,Steven Johnson,6.93,37035468,15.91,50181935,20480907,8070372,Indian Bank
+Mary Ward,Timothy Neal,8.98,18906335,16.34,99038526,40059710,13834916,Indian Overseas Bank
+Ronnie Maxwell,Lucas Johnson,1.33,44014218,4.62,23903144,28966966,19200308,Punjab & Sind Bank
+Javier James,David Tyler,4.51,23828789,2.84,28024248,40630292,12773374,Punjab National Bank
+April Wells,Laura Bullock,0.78,8486139,9.19,45496015,10134794,3530061,State Bank of India
+Kimberly Lozano,Richard Rich,2.58,20696460,9.05,25492573,19549543,13739725,UCO Bank
+Aaron Martinez,Kurt Potts,5.3,30176602,9.87,24366125,63326160,967032,Union Bank of India
+Robin Wise MD,Brendan Murphy,0.75,11613787,14.85,84252420,51397338,9373757,Axis Bank Ltd
+Sarah Juarez,Gina Winters,2.39,31448882,13.79,30863865,47101056,18504379,Bandhan Bank Ltd
+Gene Alvarez,Raymond Morris,6.67,1217789,19.7,46553958,63571795,4646949,CSB Bank Ltd
+Rebekah Arnold,Melissa Schneider,5.68,49458777,2.87,47816686,73642041,15760086,City Union Bank Ltd
+Molly Ibarra,Stephen Diaz,2.59,49296952,8.65,91178885,20521714,12867682,DCB Bank Ltd
+Paula Cherry,Charles Rogers,6.1,18675739,7.45,38270233,56700055,9296677,Dhanlaxmi Bank Ltd
+Michael Flores,Samantha Wilson,8.19,34593765,17.37,56020613,30511941,13285094,Federal Bank Ltd
+Edward Thompson,Christine Ali,0.56,12989124,5.72,37326368,39188276,12964587,HDFC Bank Ltd
+William Hutchinson,Andre Keith,8.16,35069940,4.61,95125977,10957459,4135491,ICICI Bank Ltd
+Christopher Young,Alicia Dean,7.13,8141109,9.52,45431319,63526649,8345761,IndusInd Bank Ltd
+Erica Salas,Mary Cortez,3.73,42963185,9.02,77834855,5226999,16320138,IDFC First Bank Ltd
+Dustin Collins,Michael Daniels,1.98,21028290,6.29,75569635,74782527,1339687,Jammu & Kashmir Bank Ltd
+Lisa Miller,Melinda Cline,9.59,43879174,5.75,43704923,77269803,19337705,Karnataka Bank Ltd
+Maurice Robinson,Mr. Zachary Cisneros,3.7,35068679,18.54,16818112,31445607,11506064,Karur Vysya Bank Ltd
+Bruce Terry,Mary Gates,1.38,41867299,9.42,22388090,53884978,7927850,Kotak Mahindra Bank Ltd
+Alexis Williams,David Burns,1.42,14348698,17.37,95132217,62887757,2621211,Nainital Bank Ltd
+David Arnold,William James,8.55,11256869,11.46,66851377,14391725,16078233,RBL Bank Ltd
+Sarah Williams,Mary Wilson,6.24,26092933,1.96,47135391,49318698,10639819,South Indian Bank Ltd
+Larry Erickson,Dana Berry,8.17,11841372,19.99,15917225,47133044,14200135,Tamilnad Mercantile Bank Ltd
+Savannah Howard,Jon Bishop,7.43,37197113,16.88,10475894,21726926,4414994,YES Bank Ltd
+Brittany Luna,Edward Bennett,5.59,36591432,19.41,54769200,45308572,5190138,IDBI Bank Ltd
+Christina Parker,Heidi Dudley,9.74,1038379,18.6,27558317,73064830,2021586,Au Small Finance Bank Ltd
+John Johnson,Cindy Miranda,4.1,41194490,17.13,95511909,46511484,1748631,Capital Small Finance Bank Ltd
+Nancy York,Sherri Mueller,5.74,22753744,4.16,45159040,59813568,10712780,Equitas Small Finance Bank Ltd
+Bailey Miller,Lance Rush,8.38,33789774,10.23,31687165,48779528,17029739,Suryoday Small Finance Bank Ltd
+Angela Ross,Molly Tucker,6.38,2307062,5.06,69302158,59009265,4396356,Ujjivan Small Finance Bank Ltd
+Rebecca Clayton,Maria Kim,8.69,8507315,8.62,84045292,44682169,3761222,Utkarsh Small Finance Bank Ltd
+Ethan Larsen,Jennifer Meyer,5.98,25359226,2.11,67403166,79411983,8378581,ESAF Small Finance Bank Ltd
+Jamie Weaver,Jennifer Swanson DDS,7.19,21636923,8.2,85283645,22084279,18537071,Fincare Small Finance Bank Ltd
+Michael Berry,Terry May,0.94,17069372,19.72,11297845,30748341,5052130,Jana Small Finance Bank Ltd
+Austin Perez,Kevin David,2.67,4887292,6.04,25015458,61431351,13540790,North East Small Finance Bank Ltd
+Alyssa Howell,Brendan Simpson,3.25,17164618,15.9,20099059,55888017,15721758,Shivalik Small Finance Bank Ltd
+Elizabeth Roberts,Daniel Kim,1.26,39074679,9.65,30005727,28357554,12949080,Unity Small Finance Bank Ltd
+Kendra Rubio,Beth Miller,2.71,6285296,9.04,83227889,45392808,18625852,India Post Payments Bank Ltd
+Matthew Yang,Alexander House,1.46,6748105,19.19,14835614,59502486,14563560,Fino Payments Bank Ltd
+Sharon Jennings,Mark Rich,3.14,33614267,19.91,59555330,78542887,5684928,Paytm Payments Bank Ltd
+Jennifer Mason,Jeffrey Harper,6.54,5644773,11.56,88183110,5054484,14421214,Airtel Payments Bank Ltd
+Meredith Gross,Jason Robinson,3.97,36749305,14.65,84158663,45785405,3822614,Andhra Pragathi Grameena Bank
+Michelle Carpenter,Robert Lee,4.02,9439645,3.94,29876811,43508907,16919761,Andhra Pradesh Grameena Vikas Bank
+Veronica James,Dana Holloway,2.49,9616205,6.64,67684996,33210242,14194096,Arunachal Pradesh Rural Bank
+Scott Carter,Michael Garcia,3.04,45275128,19.41,27105448,62698610,9886521,Aryavart Bank
+Frank Oliver,Roberta Rowland,9.4,32895660,12,15614174,48251559,1597776,Assam Gramin Vikash Bank
+Steven Anderson,Stephanie Greene,6.66,37896694,11.3,51373735,67409658,12932922,Bangiya Gramin Vikash Bank
+Christopher Lang,Tracy Larson,6.29,12081482,15.21,58942697,64295515,7790360,Baroda Gujarat Gramin Bank
+Robin Jimenez,Kathy Taylor,2.13,18787649,2.09,15354599,64345683,15377467,Baroda Rajasthan Kshetriya Gramin Bank
+Hector Cortez,Amanda Taylor,7.43,36411588,12.1,58024342,33682516,15421516,Baroda UP Bank
+Brittany Johnson,Elizabeth Crawford,2.05,41707828,10.55,38195995,73608612,8422625,Chaitanya Godavari Grameena Bank
+Kimberly Taylor,Ashley Johnson,4.1,29396306,17.2,43491314,68509974,12669724,Chhattisgarh Rajya Gramin Bank
+Chelsea Lewis,Andrew Kelly,9.9,15213536,3.99,99514287,27775593,3833787,Dakshin Bihar Gramin Bank
+Benjamin Walker,Michael Lambert,6.58,37191547,19.25,23796726,16381064,12825715,Ellaquai Dehati Bank
+Richard Hernandez,Samuel Martin,5.79,49984844,2.52,57469942,43089166,18769242,Himachal Pradesh Gramin Bank
+Julia Powell,Natalie Thomas,7,47296233,4.53,85146293,74182797,12535097,J&K Grameen Bank
+David Schmidt,Jason Kennedy,8.51,14499019,12.31,64543049,49988206,2531723,Jharkhand Rajya Gramin Bank
+Melissa Torres,Sean Price,7.87,48845195,13.83,93303777,17534217,13859349,Karnataka Gramin Bank
+Joan Myers,Cynthia Montoya,2.68,21918926,5.47,30743797,36523529,9757045,Karnataka Vikas Gramin Bank
+Michael Potter,Chad Rose,0.8,27775919,3.28,41774346,46663795,6868918,Kerala Gramin Bank
+Mrs. Deborah Dunlap,Tiffany Allen,3.5,46076148,17.92,31810617,35150759,4598999,Madhya Pradesh Gramin Bank
+Heather Reed,Bruce Olson,3.04,44612578,5.68,33763566,31726767,15757783,Madhyanchal Gramin Bank
+Melody Adams,Alex Martinez,2.5,26059825,12.3,65337219,24777514,3576049,Maharashtra Gramin Bank
+Billy Levine,Timothy Wilson,9.46,30400398,12.77,13326769,8278320,7617090,Manipur Rural Bank
+Mary Thompson,Desiree Moore,8.83,35733926,8.97,34073380,11202700,1216637,Meghalaya Rural Bank
+Scott Johnson,Justin Day,3.49,31298722,12.09,54585178,37862209,2197133,Mizoram Rural Bank
+Alan Rich,Dustin Gregory,6.73,9120454,10.93,65259205,68771720,11690710,Nagaland Rural Bank
+Matthew Wilson,Cassandra Hernandez,4.26,17636664,18.76,99913412,14774839,8672815,Odisha Gramya Bank
+Lindsey Keller,Larry Lindsey,9.19,16079183,4.88,43308443,66124923,4725304,Paschim Banga Gramin Bank
+Lawrence Bennett,Suzanne Kennedy,4.86,5296705,14.61,45810056,60625330,19444093,Prathama U.P. Gramin Bank
+Mr. William Smith Jr.,Anthony Spears,3.02,23688538,5.54,31367172,31096655,7385556,Puduvai Bharathiar Grama Bank
+Emily Duffy,Laura Johnson,2.84,2411585,8.52,24508349,56536717,2802174,Punjab Gramin Bank
+David Williams,Brandon Hernandez,5.83,40480729,13.76,61343880,71354180,19096127,Rajasthan Marudhara Gramin Bank
+Jason James,Phillip Young,3,38173044,6.7,15197528,58640499,7451047,Saptagiri Grameena Bank
+Steven Horne,Kyle Price,6.05,16442738,7.01,73174945,37747037,7746124,Sarva Haryana Gramin Bank
+Christopher Lozano,Matthew Harvey,9.03,40489547,15.29,39854548,24806690,8318138,Saurashtra Gramin Bank
+Patricia Vasquez,Erin Ramirez,4.29,15778538,2.38,36786211,5744212,11524629,Tamil Nadu Grama Bank
+Danny Montgomery,Donald Martin,2.58,1482569,9.71,71780854,19305904,5451096,Telangana Grameena Bank
+Lori Oconnor,Emily Ortiz,9.98,5764265,19.97,56930359,62062156,595145,Tripura Gramin Bank
+Denise Turner,Albert Hays,5.34,48502401,19.93,50962024,34372360,9803799,Uttar Bihar Gramin Bank
+Nicole Jackson,Tammy Anderson,1.36,43352602,2.39,40547349,28607110,5354922,Utkal Grameen Bank
+Stephen Hall,Tracie Vance,0.95,4950951,5.05,39920292,74519112,4861812,Uttarbanga Kshetriya Gramin Bank
+Alexander Rios,Rhonda Smith,1.54,16364023,6.04,13176186,67350830,18626622,Vidharbha Konkan Gramin Bank
+Michelle Martin,Jacob Jackson,6.46,5523159,18.73,98588154,11740197,8910559,Uttarakhand Gramin Bank
+David Clark,Kent Nguyen,8.02,3108087,17.74,35921441,79813739,6355151,AB Bank Ltd
+Crystal Morales,Barbara Stewart,4.51,23174680,17.71,63481198,38446826,4188516,American Express Banking Corporation
+Joseph Valenzuela,Nathan Brown,1.1,5755156,8.02,54058573,21288475,1365038,Australia and New Zealand Banking Group Ltd
+Brooke Snow,Sandra Moore,4.13,35504433,4,47393469,66265269,4922582,Barclays Bank Plc
+Amy White,Eric Carter,9.96,16972220,16.84,19317495,22896471,998629,BNP Paribas
+Joseph Garcia,Robert Ellis,5.53,19688292,14.37,47463522,67363359,12520616,Citibank NA
+Jaclyn Diaz,Robert Lozano MD,9.73,45894338,12.62,57130035,76287314,8483659,Deutsche Bank AG
+Joshua Barnes,Tracey Pearson,8.68,33575615,19.76,96098221,47587010,11363967,HSBC Ltd
